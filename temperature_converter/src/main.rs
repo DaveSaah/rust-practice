@@ -1,14 +1,17 @@
+use std::io::*;
+
 /// Allows a user to convert temperature from
 /// degrees celsius to fahrenheit and vice versa
 fn main() {
     println!("Temperature converter\n");
     println!("1. Convert from Fahrenheit to Celsius");
     println!("2. Convert from Celsius to Fahrenheit");
-    println!("3. Exit");
 
     let mut option = String::new();
 
-    println!("\nPick an option:");
+    print!("\nPick an option: ");
+    std::io::stdout().flush().unwrap();
+
     std::io::stdin()
         .read_line(&mut option)
         .expect("Unable to read user input");
@@ -19,7 +22,7 @@ fn main() {
         "1" => {
             let temp = get_temp("fahrenheit");
             println!(
-                "{} degrees fahrenheit is {:.2} degrees celsius",
+                "\n{} degrees fahrenheit is {:.2} degrees celsius",
                 temp,
                 to_celsius(temp)
             )
@@ -27,7 +30,7 @@ fn main() {
         "2" => {
             let temp = get_temp("celsius");
             println!(
-                "{} degrees celsius is {:.2} degrees fahrenheit",
+                "\n{} degrees celsius is {:.2} degrees fahrenheit",
                 temp,
                 to_fahrenheit(temp)
             )
@@ -60,7 +63,8 @@ fn to_fahrenheit(celsius: f64) -> f64 {
 ///
 /// * `temp_type` - a string representing the temperature input type (celsius or fahrenheit).
 fn get_temp(temp_type: &str) -> f64 {
-    println!("\nEnter {} temperature:", temp_type);
+    print!("\nEnter {} temperature: ", temp_type);
+    std::io::stdout().flush().unwrap();
 
     let mut temp = String::new();
     std::io::stdin()
