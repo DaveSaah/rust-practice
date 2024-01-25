@@ -1,4 +1,4 @@
-use std::io::*;
+use std::io::Write;
 
 /// Allows a user to convert temperature from
 /// degrees celsius to fahrenheit and vice versa
