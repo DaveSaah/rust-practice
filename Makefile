@@ -1,0 +1,2 @@
+all:
+	@rustup doc --book
